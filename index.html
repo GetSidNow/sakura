@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sakura Inn</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
   <style>
@@ -13,22 +15,28 @@
       /* Brand Colors: Primary: #d42626, Secondary: #ffffff, Tertiary: #000000 */
       --accent-color: #d42626; /* Primary */
       --bg-color: #ffffff;     /* Secondary */
-      --text-color: #000000;   /* Tertiary (for contrast on white background) */
+      --text-color: #000000;   /* Tertiary */
     }
+    /* Use the modern Poppins font for a friendly, modern look */
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
     }
+    /* Elevated card design with softer shadows and more rounding */
     .card {
-      background-color: #f5f5f5;
-      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px -15px var(--accent-color);
     }
+    /* Modern tab styling with extra spacing */
     .tab {
       background-color: transparent;
       color: var(--text-color);
@@ -37,10 +45,11 @@
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
+      font-weight: 600;
     }
     .tab.active {
       color: var(--accent-color);
-      border-bottom: 2px solid var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
     }
     .tab-content {
       display: none;
@@ -63,6 +72,10 @@
     }
     a {
       color: var(--accent-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -74,38 +87,36 @@
   </div>
   
   <!-- Main Container -->
-  <div class="max-w-4xl mx-auto pt-16">
+  <div class="max-w-4xl mx-auto pt-20">
     <!-- Header Section -->
-    <header class="text-center mb-8 animate__animated animate__fadeIn">
+    <header class="text-center mb-10 animate__animated animate__fadeIn">
       <!-- Action Buttons: Text us, Call us, Direction -->
-      <div class="flex flex-row justify-center items-center gap-4 mb-4 overflow-x-auto">
-        <a href="sms:+13233815850" class="inline-block font-bold py-2 px-4 rounded" style="background-color: var(--accent-color); color: #ffffff;">
+      <div class="flex flex-row justify-center items-center gap-4 mb-6 overflow-x-auto">
+        <a href="sms:+13233815850" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
           Text us
         </a>
-        <a href="tel:+18182438999" class="inline-block font-bold py-2 px-4 rounded" style="background-color: var(--accent-color); color: #ffffff;">
+        <a href="tel:+18182438999" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
           Call us
         </a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=1500+E+Colorado+St,+Glendale,+CA+91205" target="_blank" class="inline-block font-bold py-2 px-4 rounded" style="background-color: var(--accent-color); color: #ffffff;">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=1500+E+Colorado+St,+Glendale,+CA+91205" target="_blank" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
           Direction
         </a>
       </div>
       <!-- One-line Welcome Text -->
-      <div class="text-base mb-6">
-        Welcome to Sakura Inn – your home away from home!
-      </div>
+      <p class="text-lg">Welcome to Sakura Inn – your home away from home!</p>
     </header>
 
     <!-- Navigation with Horizontal Scroll Arrows -->
     <div class="relative mb-8">
       <!-- Left Arrow -->
-      <button onclick="scrollNav(-100)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full">
+      <button onclick="scrollNav(-100)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full shadow">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="color: var(--accent-color);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       
       <!-- Navigation Bar -->
-      <nav id="navBar" class="flex overflow-x-auto border-b" style="border-color: #ccc;">
+      <nav id="navBar" class="flex overflow-x-auto border-b" style="border-color: #ddd;">
         <button class="tab active" onclick="switchTab('welcome')">Welcome Home</button>
         <button class="tab" onclick="switchTab('amenities')">Our Amenities</button>
         <button class="tab" onclick="switchTab('dining')">Eat & Drink</button>
@@ -116,7 +127,7 @@
       </nav>
       
       <!-- Right Arrow -->
-      <button onclick="scrollNav(100)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full">
+      <button onclick="scrollNav(100)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full shadow">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="color: var(--accent-color);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
@@ -124,10 +135,10 @@
     </div>
 
     <!-- Content Sections -->
-    <div class="space-y-8">
+    <div class="space-y-12">
       <!-- Welcome Section -->
       <div id="welcome" class="tab-content active">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Wi‑Fi Card -->
           <div class="card p-6 rounded-lg">
             <div class="flex items-center mb-4">
@@ -137,9 +148,9 @@
               </svg>
               <h3 class="text-xl font-semibold">Wi‑Fi Access</h3>
             </div>
-            <p class="text-gray-600">Password: Ohtani17</p>
-            <!-- "Connect Now" Button to open Wi‑Fi settings -->
-            <a id="wifiConnect" href="#" class="inline-block mt-2 font-bold py-2 px-4 rounded" style="background-color: var(--accent-color); color: #ffffff;">
+            <p class="text-sm text-gray-600">Password: Ohtani17</p>
+            <!-- "Connect Now" Button -->
+            <a id="wifiConnect" href="#" class="inline-block mt-4 font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
               Connect Now
             </a>
           </div>
@@ -152,8 +163,8 @@
               </svg>
               <h3 class="text-xl font-semibold">Check‑in/out</h3>
             </div>
-            <p class="text-gray-600 mb-2">Check‑in: 3:00 PM</p>
-            <p class="text-gray-600">Check‑out: 11:00 AM</p>
+            <p class="text-sm text-gray-600 mb-2">Check‑in: 3:00 PM</p>
+            <p class="text-sm text-gray-600">Check‑out: 11:00 AM</p>
           </div>
         </div>
       </div>
@@ -185,7 +196,6 @@
               24/7 Front Desk
             </li>
           </ul>
-          <!-- Add-ons Section -->
           <div class="mt-6">
             <h4 class="text-lg font-semibold accent mb-2">Add-ons</h4>
             <ul class="list-disc list-inside">
@@ -195,8 +205,7 @@
               <li>Late check‑out (12pm to 2pm): $25 plus tax</li>
             </ul>
           </div>
-          <!-- Pool Notice (if applicable) -->
-          <p class="mt-4 text-gray-600">
+          <p class="mt-4 text-sm text-gray-600">
             Please know that our pool is closed for remodeling until further notice.
           </p>
         </div>
@@ -209,11 +218,11 @@
           <div class="space-y-6">
             <div>
               <h4 class="font-medium mb-2">Breakfast</h4>
-              <p>Continental breakfast served daily 6:30 AM - 9:30 AM</p>
+              <p class="text-sm">Continental breakfast served daily 6:30 AM - 9:30 AM</p>
             </div>
             <div>
               <h4 class="font-medium mb-2">Bars</h4>
-              <p>
+              <p class="text-sm">
                 Discover the best bars in the area for an exciting nightlife experience.
                 <a href="https://www.google.com/maps/search/?api=1&query=Bars+Glendale" target="_blank" class="hover:underline">
                   View on Map
@@ -222,7 +231,7 @@
             </div>
             <div>
               <h4 class="font-medium mb-2">Restaurants</h4>
-              <p>
+              <p class="text-sm">
                 Explore a variety of restaurants offering local and international cuisines.
                 <a href="https://www.google.com/maps/search/?api=1&query=Restaurants+Glendale" target="_blank" class="hover:underline">
                   View on Map
@@ -231,7 +240,7 @@
             </div>
             <div>
               <h4 class="font-medium mb-2">Brunch Spots</h4>
-              <p>
+              <p class="text-sm">
                 Check out the top brunch spots for a delightful mid‑morning meal.
                 <a href="https://www.google.com/maps/search/?api=1&query=Brunch+Glendale" target="_blank" class="hover:underline">
                   View on Map
@@ -240,7 +249,7 @@
             </div>
             <div>
               <h4 class="font-medium mb-2">Cafés</h4>
-              <p>
+              <p class="text-sm">
                 Relax in charming cafés around the area.
                 <a href="https://www.google.com/maps/search/?api=1&query=Cafes+Glendale" target="_blank" class="hover:underline">
                   View on Map
@@ -249,8 +258,8 @@
             </div>
             <div>
               <h4 class="font-medium mb-2">Additional Services</h4>
-              <p>24/7 coffee and tea in lobby</p>
-              <p>Local restaurant delivery available</p>
+              <p class="text-sm">24/7 coffee and tea in lobby</p>
+              <p class="text-sm">Local restaurant delivery available</p>
             </div>
           </div>
         </div>
@@ -258,15 +267,15 @@
 
       <!-- Explore Local / Area Guide Section -->
       <div id="area" class="tab-content">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="card p-6 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 accent">
               <a href="https://www.google.com/maps/search/?api=1&query=Griffith+Observatory" target="_blank" class="hover:underline">
                 Griffith Observatory
               </a>
             </h3>
-            <p class="mb-2">Distance: ~5 miles</p>
-            <p>Driving time: ~15 minutes</p>
+            <p class="text-sm mb-2">Distance: ~5 miles</p>
+            <p class="text-sm">Driving time: ~15 minutes</p>
           </div>
           <div class="card p-6 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 accent">
@@ -274,8 +283,8 @@
                 The Getty Center
               </a>
             </h3>
-            <p class="mb-2">Distance: ~8 miles</p>
-            <p>Driving time: ~20 minutes</p>
+            <p class="text-sm mb-2">Distance: ~8 miles</p>
+            <p class="text-sm">Driving time: ~20 minutes</p>
           </div>
           <div class="card p-6 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 accent">
@@ -283,7 +292,7 @@
                 Downtown Glendale
               </a>
             </h3>
-            <p>Explore local shops & dining</p>
+            <p class="text-sm">Explore local shops & dining</p>
           </div>
           <div class="card p-6 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 accent">
@@ -291,7 +300,7 @@
                 Brand Park
               </a>
             </h3>
-            <p class="mb-2">Great for a relaxing stroll</p>
+            <p class="text-sm mb-2">Great for a relaxing stroll</p>
           </div>
         </div>
       </div>
@@ -330,10 +339,10 @@
       <div id="bookdirect" class="tab-content">
         <div class="card p-6 rounded-lg">
           <h3 class="text-xl font-semibold mb-4 accent">🎉 Book Direct & Save</h3>
-          <p class="mb-4">
+          <p class="mb-4 text-sm">
             Enjoy our best available rates when you book directly with us. Next time you plan a visit, simply call or text us – or check our website for the latest offers.
           </p>
-          <a href="https://sakurainnglendale.com/" target="_blank" class="inline-block font-bold py-2 px-4 rounded" style="background-color: var(--accent-color); color: #ffffff;">
+          <a href="https://sakurainnglendale.com/" target="_blank" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
             Book Now
           </a>
         </div>
